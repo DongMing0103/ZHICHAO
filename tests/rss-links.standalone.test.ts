@@ -20,6 +20,7 @@ const pages: Record<string, string> = {
   "/dates": feed(entry('<link href="undated"/>') + entry('<link href="published"/><published>2020-02-15T00:00:00Z</published>') + entry('<link href="invalid"/><published>unknown</published>')),
   "/rss/feed.xml": `<rss version="2.0"><channel><title>Blog</title><item><title>Release notes</title><link>/blog/zh/posts/release/</link></item><item><title>Elsewhere</title><link>https://publisher.example/post</link></item></channel></rss>`,
   "/fragments": feed(entry('<link href="notes#first"/>') + entry('<link href="notes#second"/>'), ' xml:base="https://publisher.example/"'),
+  "/rss/lowercase-date.xml": `<rss version="2.0"><channel><title>Journal</title><item><title>Research</title><link>https://publisher.example/paper</link><pubdate>2026-10-30T00:00:00Z</pubdate></item></channel></rss>`,
 };
 const server = http.createServer((req, res) => {
   if (req.url === "/old/feed.xml" || req.url === "/old/rss.xml") {
@@ -60,6 +61,10 @@ test("relative Atom links use the final document URL after redirects", async () 
 
 test("relative RSS item links resolve against the final document URL; absolute ones are kept", async () => {
   assert.deepEqual((await read("/old/rss.xml")).map((item) => item.url), [root + "/blog/zh/posts/release/", "https://publisher.example/post"]);
+});
+
+test("RSS publication dates accept lowercase pubdate used by Frontiers", async () => {
+  assert.equal((await read("/rss/lowercase-date.xml"))[0]!.publishedAt?.toISOString(), "2026-10-30T00:00:00.000Z");
 });
 
 test("absolute alternate links and the first-link fallback keep working", async () => {

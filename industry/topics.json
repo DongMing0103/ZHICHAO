@@ -2,13 +2,13 @@
   "groups": [
     {
       "key": "company",
-      "name": "公司与模型",
-      "blurb": "按厂商追踪模型、产品与公司动态"
+      "name": "公司与机构",
+      "blurb": "按 AI 公司与心理咨询机构追踪动态"
     },
     {
       "key": "field",
-      "name": "技术方向",
-      "blurb": "按技术领域深挖：Agent、多模态、具身智能……"
+      "name": "技术与专业方向",
+      "blurb": "按 AI 技术与心理咨询领域查看进展"
     },
     {
       "key": "genre",
@@ -333,6 +333,149 @@
         "政策/监管"
       ],
       "definition": "AI 相关的政策法规与政府监管：立法进展、出口管制与全球治理。"
+    },
+    {
+      "slug": "cps-registry",
+      "name": "CPS 注册系统",
+      "group": "company",
+      "entityId": "cps-registry",
+      "definition": "注册心理师、督导师、伦理守则与继续教育通知。"
+    },
+    {
+      "slug": "cps",
+      "name": "中国心理学会",
+      "group": "company",
+      "entityId": "cps",
+      "definition": "心理学会的行业通知、会议与专业建设。"
+    },
+    {
+      "slug": "camh",
+      "name": "中国心理卫生协会",
+      "group": "company",
+      "entityId": "camh",
+      "definition": "心理卫生协会的评价、标准和学术活动。"
+    },
+    {
+      "slug": "psych-institute",
+      "name": "中科院心理所",
+      "group": "company",
+      "entityId": "psych-institute",
+      "definition": "心理健康研究、国民心理健康报告与培训动态。"
+    },
+    {
+      "slug": "apa",
+      "name": "APA",
+      "group": "company",
+      "entityId": "apa",
+      "definition": "美国心理学会的研究、伦理与数字心理健康动态。"
+    },
+    {
+      "slug": "talkspace",
+      "name": "Talkspace",
+      "group": "company",
+      "entityId": "talkspace",
+      "definition": "平台财报、保险支付与服务模式变化。"
+    },
+    {
+      "slug": "betterhelp",
+      "name": "BetterHelp",
+      "group": "company",
+      "entityId": "betterhelp",
+      "definition": "平台经营、自费模式与服务变化。"
+    },
+    {
+      "slug": "psychotherapy",
+      "name": "咨询方法与督导",
+      "group": "field",
+      "tags": [
+        "循证疗法",
+        "咨询伦理"
+      ],
+      "definition": "CBT、DBT、ACT 等方法以及督导与伦理。"
+    },
+    {
+      "slug": "digital-mental-health",
+      "name": "数字心理健康",
+      "group": "field",
+      "tags": [
+        "数字心理健康",
+        "临床证据"
+      ],
+      "definition": "数字心理服务、AI 辅助与临床证据。"
+    },
+    {
+      "slug": "youth-mental-health",
+      "name": "青少年心理",
+      "group": "field",
+      "tags": [
+        "青少年心理"
+      ],
+      "definition": "青少年心理健康研究、服务与政策。"
+    },
+    {
+      "slug": "mental-health-coverage",
+      "name": "医保与支付",
+      "group": "field",
+      "tags": [
+        "医保支付"
+      ],
+      "definition": "心理治疗医保、保险支付与平台商业模式。"
+    },
+    {
+      "slug": "ai-economics",
+      "name": "AI 商业化与成本",
+      "group": "field",
+      "tags": [
+        "推理成本",
+        "算力供应链",
+        "AI商业化"
+      ],
+      "definition": "推理价格、算力供应链与商业模式。"
+    },
+    {
+      "slug": "psych-research",
+      "name": "心理研究",
+      "group": "genre",
+      "tags": [
+        "心理研究"
+      ],
+      "definition": "心理与精神健康领域的新研究与循证证据。"
+    },
+    {
+      "slug": "psych-policy",
+      "name": "心理政策",
+      "group": "genre",
+      "tags": [
+        "心理政策"
+      ],
+      "definition": "心理健康服务体系、监管与医保政策。"
+    },
+    {
+      "slug": "psych-practice",
+      "name": "心理实务",
+      "group": "genre",
+      "tags": [
+        "心理执业"
+      ],
+      "definition": "执业体系、培训、督导与伦理变化。"
+    },
+    {
+      "slug": "psych-market",
+      "name": "心理市场",
+      "group": "genre",
+      "tags": [
+        "心理市场"
+      ],
+      "definition": "心理服务平台、融资、财报与市场数据。"
+    },
+    {
+      "slug": "psych-public",
+      "name": "心理科普",
+      "group": "genre",
+      "tags": [
+        "心理科普"
+      ],
+      "definition": "面向公众的循证科普与咨询过程解释。"
     }
   ]
 }

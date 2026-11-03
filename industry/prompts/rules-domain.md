@@ -1,7 +1,7 @@
 
-【AI 领域翻译规则 — 本平台 100% 是 AI/ML/LLM 行业内容，严格遵守】
+【AI 与心理咨询领域翻译规则：先按材料所属语境判断词义】
 
-1. 歧义默认值：以下词在中文有非 AI 歧义，**一律按 AI 含义翻译**：
+1. 歧义默认值：以下词在 AI 材料中按 AI 含义翻译；心理咨询材料按临床或研究语境判断，不能机械套用：
    - LLM = 大语言模型（绝不译"法学硕士"/"Master of Laws"）
    - Token / tokens = 模型 token（保留英文；绝不译"代币"/"令牌"）
    - Transformer = Transformer 架构（保留英文；不译"变压器"）
@@ -43,3 +43,5 @@
    - URL 原样
    - 数字+单位：8k context / 175B params / 3.5x speedup / $3 per M tokens / 99.9%
    - 金额、参数量、比例、区间必须保留原文的阿拉伯数字和单位；不要把 $10B-$100B 改写成“数百亿至数千亿美元”等中文数量词
+
+5. 心理咨询术语：CBT=认知行为疗法，DBT=辩证行为疗法，ACT=接纳与承诺疗法；EAP=员工援助计划，RCT=随机对照试验。首次出现可保留缩写。Counselling/counseling 依语境译作心理咨询，psychotherapy 译作心理治疗，psychiatry 译作精神科；三者不可混同。Clinical trial 注册、招募、完成、发表是不同阶段。Screening 是筛查，不能写成诊断；相关性不写成因果；self-reported outcomes 应注明自评。不要把市场报告的预测数字写成既成规模。

@@ -18,6 +18,11 @@ export const CATEGORIES = [
   { key: "paper", tagColor: "violet", label: "论文", feedLabel: "论文", section: "论文研究", guide: "以新研究方法、实验设计与发现为核心的论文、技术报告、新基准或研究数据集。系统性红队实验属于研究；既有榜单成绩归模型，真实事故的新闻调查归行业。" },
   { key: "tip", tagColor: "green", label: "教程", section: "技巧与观点", guide: "读者可以照着使用的方法、提示词、工具用法、工程实践复盘与技术讲解。重点是可复用的做法；单纯发布工具归产品，只有态度和预测而无做法归观点。", commentary: true },
   { key: "opinion", tagColor: "purple", label: "观点", section: "技巧与观点", guide: "重点是作者的解释、判断、主张、预测、评论或访谈观点。讨论市场不自动归行业，作者是名人不自动归观点。", commentary: true },
+  { key: "psych-practice", tagColor: "turquoise", label: "心理实务", section: "心理咨询实务", guide: "咨询执业资格、伦理、督导、培训与 CBT/DBT/ACT 等实务方法。研究结果归心理研究，监管新规归心理政策。" },
+  { key: "psych-research", tagColor: "violet", label: "心理研究", section: "心理研究与证据", guide: "心理健康、咨询过程、数字疗法与 AI 心理服务的原始研究、系统综述、临床试验和证据评估。一般心理科普归心理科普。" },
+  { key: "psych-market", tagColor: "orange", label: "心理市场", section: "心理服务市场", guide: "心理咨询、数字心理健康及 EAP 平台的融资、财报、保险支付、产品与市场数据。AI 行业的一般融资归行业。" },
+  { key: "psych-policy", tagColor: "red", label: "心理政策", section: "心理健康政策", guide: "心理健康服务体系、执业规范、医保、平台治理与精神卫生相关政策的正式发布和落实。未核实的政策传闻不按生效政策处理。" },
+  { key: "psych-public", tagColor: "green", label: "心理科普", section: "心理科普与观点", guide: "面向公众的循证心理科普、访谈、播客与咨询过程解释；无新事实或可复用方法的重复鸡汤低价值。", commentary: true },
 ] as const satisfies ReadonlyArray<{ key: string; tagColor: string; label: string; feedLabel?: string; section: string; guide: string; commentary?: true }>;
 
 /**
@@ -28,7 +33,7 @@ export const CATEGORIES = [
 export const RELEASE: { category: string; tag: string; unit: string } | null = { category: "ai-models", tag: "模型发布", unit: "个新模型" };
 
 /** 周报月报的总述可以直接写、不必在报道里找到出处的行业通用词（小写）。站名会自动算进去。 */
-export const PLAIN_TERMS: readonly string[] = ["ai", "api", "llm", "gpu", "agi", "ceo", "ipo"];
+export const PLAIN_TERMS: readonly string[] = ["ai", "api", "llm", "gpu", "agi", "ceo", "ipo", "cbt", "dbt", "act", "eap", "rct", "who", "apa"];
 
 /**
  * 内容理解一步给每篇资料判的“内容类型”（写在 prompts/content-understanding.md 里，改了类型要同步改那份提示词）。
@@ -41,19 +46,20 @@ export const ITEM_TYPES = ["model_release", "product_launch", "tool_or_prompt", 
 /** 每篇资料的第一个标签必须是这些“分类标签”之一。 */
 export const CATEGORY_TAGS = [
   "产品更新", "模型发布", "论文/研究", "开源/仓库", "教程/实践", "现象/趋势", "大佬观点", "评测/基准", "安全/对齐", "行业动态", "政策/监管",
-  "非AI/通用工具", "其他",
+  "非AI/通用工具", "心理执业", "心理研究", "心理市场", "心理政策", "心理科普", "其他",
 ] as const;
 
 /** 可选的主题标签。 */
 export const TOPIC_TAGS = [
-  "Agent", "编码", "推理", "多模态", "语音", "视频", "图像生成", "RAG", "端侧", "数据/训练", "搜索", "部署/工程", "开源生态", "具身智能", "MCP/工具调用",
+  "Agent", "编码", "推理", "多模态", "语音", "视频", "图像生成", "RAG", "端侧", "数据/训练", "搜索", "部署/工程", "开源生态", "具身智能", "MCP/工具调用", "推理成本", "算力供应链", "AI商业化", "临床证据", "数字心理健康", "青少年心理", "咨询伦理", "医保支付", "循证疗法",
 ] as const;
 
 /** 可选的实体标签（公司、机构、平台）。 */
-export const ENTITY_TAGS = ["OpenAI", "Anthropic", "DeepSeek", "DeepMind", "Google", "Meta", "Microsoft", "xAI", "Hugging Face", "GitHub", "arXiv"] as const;
+export const ENTITY_TAGS = ["OpenAI", "Anthropic", "DeepSeek", "DeepMind", "Google", "Meta", "Microsoft", "xAI", "Hugging Face", "GitHub", "arXiv", "CPS注册系统", "中国心理学会", "中国心理卫生协会", "中科院心理所", "APA", "WHO", "壹心理", "简单心理", "Talkspace", "BetterHelp"] as const;
 
 /** 模型常写的近义词，统一成词表里的写法。 */
 export const TAG_SYNONYMS: Readonly<Record<string, string>> = {
+  "心理咨询师": "心理执业", "督导": "心理执业", "心理治疗": "循证疗法", "临床试验": "临床证据", "数字疗法": "数字心理健康", "心理健康政策": "心理政策", "医保": "医保支付",
   "教程/玩法": "教程/实践", "技巧/最佳实践": "教程/实践", "合作/生态": "行业动态", "融资/收购": "行业动态", "公司动态": "行业动态",
   合作: "行业动态", 生态: "行业动态", 融资: "行业动态", 收购: "行业动态", 投资: "行业动态", 并购: "行业动态",
   政策: "政策/监管", 监管: "政策/监管", 法规: "政策/监管", 安全: "安全/对齐", 对齐: "安全/对齐",
@@ -74,6 +80,13 @@ export const TAG_SYNONYMS: Readonly<Record<string, string>> = {
  * 所有这些名字都用来认出说的是哪家公司，比如把事实的主体对到发布方。
  */
 export const ENTITIES: Record<string, { name: string; displayTag: string | null; aliases: string[]; orgNames?: string[]; otherNames?: string[] }> = {
+  "cps-registry": { name: "CPS 注册系统", displayTag: "CPS注册系统", aliases: ["CPS 注册系统", "中国心理学会临床与咨询心理学专业机构和专业人员注册系统"] },
+  "cps": { name: "中国心理学会", displayTag: "中国心理学会", aliases: ["中国心理学会"] },
+  "camh": { name: "中国心理卫生协会", displayTag: "中国心理卫生协会", aliases: ["中国心理卫生协会"] },
+  "psych-institute": { name: "中科院心理所", displayTag: "中科院心理所", aliases: ["中国科学院心理研究所", "中科院心理所"] },
+  "apa": { name: "APA", displayTag: "APA", aliases: ["American Psychological Association", "美国心理学会", "APA"] },
+  "talkspace": { name: "Talkspace", displayTag: "Talkspace", aliases: ["Talkspace"] },
+  "betterhelp": { name: "BetterHelp", displayTag: "BetterHelp", aliases: ["BetterHelp"] },
   "world-labs": { name: "World Labs", displayTag: null, aliases: ["World Labs"] },
   "thinking-machines": { name: "Thinking Machines Lab", displayTag: null, aliases: ["Thinking Machines"] },
   amd: { name: "AMD", displayTag: null, aliases: ["AMD", "Advanced Micro Devices"] },
