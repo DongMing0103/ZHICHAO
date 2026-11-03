@@ -1,6 +1,8 @@
 // Item detail and Markdown export, both behind the same visibility and licence rules.
 import type { OutlineEntry, SiteItemDetail, StoryRef } from "@aihot/contracts/site";
 import { ITEM_COPY, SITE } from "@aihot/site";
+import { fulltextLicenseForSource } from "@aihot/site/fulltext-license";
+import * as cheerio from "cheerio";
 import { bodyToMarkdown } from "../content/markdown.ts";
 import { withCover, type Cover } from "../content/cover.ts";
 import { sql } from "../db.ts";
@@ -36,6 +38,20 @@ interface DetailRow extends ItemRow {
 export type DetailResult =
   | { kind: "found"; item: SiteItemDetail; row: DetailRow }
   | { kind: "not_found" };
+
+/** Third-party figures and tables may carry rights separate from the article text. */
+function licensedTextOnly(html: string): string {
+  const $ = cheerio.load(html, null, false);
+  $("figure, table, picture, img, svg, video, audio, iframe, canvas").remove();
+  return $.html();
+}
+
+function licensedReadingBody(html: string, sourceName: string): string {
+  const license = fulltextLicenseForSource(sourceName);
+  if (!license) return proxyBodyImages(html);
+  return licensedTextOnly(html) +
+    `<p>作者、来源和原文链接见页面信息。文章文字按 <a href="${license.url}" rel="license noopener noreferrer">${license.name}</a> 展示；本站省略图片与表格，并可能提供中文译文及调整排版。</p>`;
+}
 
 /** Adds stable ids to h2–h4 and returns the outline. */
 function withOutline(html: string): { html: string; outline: OutlineEntry[] } {
@@ -229,6 +245,9 @@ export async function exportMarkdown(id: string): Promise<{ filename: string; bo
   lines.push(`# ${row.title}`, "");
   if (row.original_title) lines.push(`> 原标题：${row.original_title}`, "");
   lines.push(`- 来源：${publicSourceName(row.source_name)}`);
+  if (row.author) lines.push(`- 作者：${row.author}`);
+  const license = row.body_mode === "full" ? fulltextLicenseForSource(row.source_name) : null;
+  if (license) lines.push(`- 许可：[${license.name}](${license.url})；本站省略图片和表格，中文译文与排版为本站改动`);
   // Without a reliable date from the original, the time it was collected says so.
   lines.push(row.published_at ? `- 发布时间：${row.published_at.toISOString()}` : `- 收录时间：${row.discovered_at.toISOString()}`);
   lines.push(`- ${SITE.name}：${itemUrl(row.id)}`);
