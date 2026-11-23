@@ -13,6 +13,7 @@ const pages: Record<string, string> = {
   '/title': `<title type="xhtml">${xhtml('New <em>research</em> result')}</title><summary type="xhtml">${xhtml('First <b>important</b> result, then another.')}</summary>`,
   '/html-title': '<title type="html">New &lt;em&gt;research&lt;/em&gt; result</title><summary type="html">First &lt;b&gt;important&lt;/b&gt; result, then another.</summary>',
   '/body': `<title>New result</title><content type="xhtml">${xhtml(body)}</content>`,
+  '/abstract-body': `<title>New result</title><summary>Research abstract.</summary><content type="xhtml">${xhtml(body)}</content>`,
   '/html': `<title>New result</title><content type="html">${escapeXml(body)}</content>`,
   '/cdata': `<title>New result</title><content type="html"><![CDATA[${body}]]></content>`,
   '/unsafe': `<title>New result</title><content type="xhtml">${xhtml(`${body}<script>alert(1)</script><p><a href="javascript:alert(1)" onclick="alert(1)">Unsafe link</a> &lt;img src=x onerror=alert(1)&gt;</p>`)}</content>`,
@@ -29,9 +30,9 @@ after(async () => {
   await new Promise<void>(resolve => server.close(() => resolve()));
 });
 
-async function read(path: string, summaryIsBody = false) {
+async function read(path: string, summaryIsBody = false, feedContentIsSummary = false) {
   const feedUrl = `http://127.0.0.1:${(server.address() as { port: number }).port}${path}`;
-  return (await fetchRss({ config: { feedUrl, summaryIsBody }, participation_mode: 'editorial' } as never)).candidates;
+  return (await fetchRss({ config: { feedUrl, summaryIsBody, feedContentIsSummary }, participation_mode: 'editorial' } as never)).candidates;
 }
 
 test('Atom HTML and XHTML titles and summaries keep the article and its text in order', async () => {
@@ -41,6 +42,14 @@ test('Atom HTML and XHTML titles and summaries keep the article and its text in 
     assert.equal(items[0]!.title, 'New research result');
     assert.equal(items[0]!.excerpt, 'First important result, then another.');
   }
+});
+
+test('a feed abstract stays an excerpt while the article page waits for extraction', async () => {
+  const [item] = await read('/abstract-body', false, true);
+  assert.equal(item!.excerpt, 'Research abstract.');
+  assert.equal(item!.bodyStatus, 'pending');
+  assert.equal(item!.bodyHtml, null);
+  assert.equal(item!.bodyText, null);
 });
 
 test('Atom XHTML bodies match escaped HTML and CDATA without losing mixed-content order', async () => {

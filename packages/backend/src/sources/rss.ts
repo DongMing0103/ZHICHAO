@@ -123,7 +123,10 @@ export function isTeaser(text: string): boolean {
 function feedText(bodyHtml: string | null, summaryText: string | null, source: SourceRow, hasPage = true, plainBody: string | null = null): Pick<Candidate, "excerpt" | "bodyHtml" | "bodyText" | "bodyStatus"> {
   const bodyText = bodyHtml ? collapseWhitespace(plainBody ?? stripTags(bodyHtml)) : null;
   const teaser = !!bodyText && readsWhole(source) && isTeaser(bodyText);
-  const excerpt = summaryText !== null ? collapseWhitespace(summaryText).slice(0, 2000) : teaser ? collapseWhitespace(bodyText!) : null;
+  const excerpt = summaryText !== null ? collapseWhitespace(summaryText).slice(0, 2000)
+    : bodyText && (teaser || source.config.feedContentIsSummary === true) ? collapseWhitespace(bodyText).slice(0, 2000) : null;
+  // Some feeds put an abstract in content; it must not stand in for the licensed article text.
+  if (source.config.feedContentIsSummary === true) return { excerpt, bodyHtml: null, bodyText: null, bodyStatus: hasPage ? "pending" : "none" };
   return !source.config.detail?.bodyUrlSuffix && bodyText && (bodyText.length > 280 || source.config.summaryIsBody === true) && !teaser
     ? { excerpt, bodyHtml, bodyText, bodyStatus: "ok" }
     : { excerpt, bodyHtml: null, bodyText: null, bodyStatus: hasPage ? "pending" : "none" };

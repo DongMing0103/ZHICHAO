@@ -37,7 +37,7 @@
 { "feedUrl": "https://example.com/feed.xml" }
 ```
 
-可选：`summaryIsBody`（确认文字订阅里的摘要就是全文时，将 RSS 的 `description`、Atom 的 `summary` 当正文，不再去抓原文页）、`allowCategories` / `denyCategories`（按订阅里的分类过滤）。
+可选：`summaryIsBody`（确认文字订阅里的摘要就是全文时，将 RSS 的 `description`、Atom 的 `summary` 当正文，不再去抓原文页）、`feedContentIsSummary`（订阅把论文摘要等短内容放进 `content` / `content:encoded` 时，将其保留为摘要并从原文页提取正文）、`allowCategories` / `denyCategories`（按订阅里的分类过滤）。
 
 所有信源的 YouTube、Vimeo 视频播放页都不作为文章正文提取。Media RSS 的视频描述保留为摘要，即使设置了 `summaryIsBody` 也不会把描述当成视频字幕；订阅通过 `content` / `content:encoded` 提供的真实文字仍可使用。其他文章中嵌入视频，不影响文章本身的正文读取。
 

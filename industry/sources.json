@@ -1,5 +1,5 @@
 {
-  "$comment": "仅接入经第一方许可确认可站内展示文章文字全文的免费信源；所有图片、图表与表格在公开全文中省略。许可与验证记录见 industry/fulltext-source-review.md。",
+  "$comment": "2026-11-04 线上信源快照：25 条启用、13 条暂停；5 条开放获取源允许站内文字全文，其余仅摘要与原文链接。详见 industry/source-catalog.md。",
   "sources": [
     {
       "id": "rss-plos-mental-health",
@@ -7,6 +7,7 @@
       "kind": "rss",
       "config": {
         "feedUrl": "https://journals.plos.org/mentalhealth/feed/atom?type=published",
+        "feedContentIsSummary": true,
         "_aihot": { "initialBackfillLimit": 5 }
       },
       "tier": "T1",
@@ -22,6 +23,7 @@
       "kind": "rss",
       "config": {
         "feedUrl": "https://journals.plos.org/digitalhealth/feed/atom?type=published",
+        "feedContentIsSummary": true,
         "_aihot": { "initialBackfillLimit": 5 }
       },
       "tier": "T1",
@@ -74,6 +76,691 @@
       "interval_minutes": 120,
       "tags": ["心理", "临床", "研究", "开放获取"],
       "site_fulltext": true,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-jiqizhixin-rsshub",
+      "name": "机器之心",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/jiqizhixin",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "AI",
+        "技术"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-36kr-newsflashes-rsshub",
+      "name": "36氪 - AI频道（快讯入口）",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/36kr/newsflashes",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 30,
+      "tags": [
+        "AI",
+        "商业"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-hugging-face",
+      "name": "Hugging Face Blog",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://huggingface.co/blog/feed.xml",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T1",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "AI",
+        "开源"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-oschina-news",
+      "name": "开源中国 - AI资讯（综合新闻）",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.oschina.net/news/rss",
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "AI",
+        "开源"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": true
+    },
+    {
+      "id": "rss-xinzhiyuan-rsshub",
+      "name": "新智元",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/wechat/mp/ms/AI_era",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "AI",
+        "快讯"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-paperweekly-rsshub",
+      "name": "PaperWeekly",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/paperweekly",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "AI",
+        "论文"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-cps-rsshub",
+      "name": "中国心理学会动态",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/cps/news",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T1",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "心理",
+        "政策"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-dxy-psychiatry-rsshub",
+      "name": "丁香园 - 精神心理",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/dxy/bbs/psychiatry",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "心理",
+        "临床"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-xinli001-rsshub",
+      "name": "壹心理 - 行业文章",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/xinli001/article",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "心理",
+        "科普"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-jiandanxinli-rsshub",
+      "name": "简单心理 - 微信专栏",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://rsshub.app/wechat/mp/ms/jiedanxinli",
+        "_aihot": {
+          "initialBackfillLimit": 5
+        }
+      },
+      "tier": "T2",
+      "participation_mode": "isolated",
+      "interval_minutes": 120,
+      "tags": [
+        "心理",
+        "咨询"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "enabled": false
+    },
+    {
+      "id": "rss-ars-technica-ai",
+      "kind": "rss",
+      "name": "Ars Technica · AI",
+      "tags": [
+        "媒体"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://arstechnica.com/ai/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-arxiv-cs-ai",
+      "kind": "rss",
+      "name": "arXiv · cs.AI",
+      "tags": [
+        "研究",
+        "AI"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&start=0&max_results=30&sortBy=submittedDate&sortOrder=descending"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-aws-ml",
+      "kind": "rss",
+      "name": "AWS Machine Learning Blog",
+      "tags": [
+        "官方",
+        "教程"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://aws.amazon.com/blogs/machine-learning/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-bair",
+      "kind": "rss",
+      "name": "Berkeley AI Research",
+      "tags": [
+        "研究"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://bair.berkeley.edu/blog/feed.xml"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-github-ai",
+      "kind": "rss",
+      "name": "GitHub Blog · AI & ML",
+      "tags": [
+        "官方"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://github.blog/ai-and-ml/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-google-deepmind",
+      "kind": "rss",
+      "name": "Google DeepMind",
+      "tags": [
+        "官方"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://deepmind.google/blog/rss.xml"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "owner_entity_id": "google",
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-google-research",
+      "kind": "rss",
+      "name": "Google Research",
+      "tags": [
+        "官方",
+        "研究"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://research.google/blog/rss/"
+      },
+      "enabled": false,
+      "site_fulltext": false,
+      "owner_entity_id": "google",
+      "interval_minutes": 60,
+      "participation_mode": "isolated",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-hidden-brain",
+      "kind": "rss",
+      "name": "Hidden Brain",
+      "tags": [
+        "科普",
+        "心理"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.hiddenbrain.org/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-import-ai",
+      "kind": "rss",
+      "name": "Import AI",
+      "tags": [
+        "个人",
+        "周刊"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://importai.substack.com/feed"
+      },
+      "enabled": false,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "isolated",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-infoq-cn",
+      "kind": "rss",
+      "name": "InfoQ 中国",
+      "tags": [
+        "工程",
+        "AI"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.infoq.cn/feed"
+      },
+      "enabled": false,
+      "site_fulltext": false,
+      "interval_minutes": 120,
+      "participation_mode": "isolated",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-latent-space",
+      "kind": "rss",
+      "name": "Latent Space",
+      "tags": [
+        "个人"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.latent.space/feed"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-microsoft-research",
+      "kind": "rss",
+      "name": "Microsoft Research",
+      "tags": [
+        "官方",
+        "研究"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.microsoft.com/en-us/research/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "owner_entity_id": "microsoft",
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-mistral",
+      "kind": "rss",
+      "name": "Mistral AI",
+      "tags": [
+        "官方"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://mistral.ai/news/rss"
+      },
+      "enabled": false,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "isolated",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-mit-tech-review-ai",
+      "kind": "rss",
+      "name": "MIT Technology Review · AI",
+      "tags": [
+        "媒体"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-nvidia-blog",
+      "kind": "rss",
+      "name": "NVIDIA Blog",
+      "tags": [
+        "官方"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://blogs.nvidia.com/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "owner_entity_id": "nvidia",
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-openai-news",
+      "kind": "rss",
+      "name": "OpenAI News",
+      "tags": [
+        "官方"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://openai.com/news/rss.xml"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "owner_entity_id": "openai",
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-psychological-science",
+      "kind": "rss",
+      "name": "Association for Psychological Science",
+      "tags": [
+        "研究",
+        "心理"
+      ],
+      "tier": "T1",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.psychologicalscience.org/feed"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-qbitai",
+      "kind": "rss",
+      "name": "量子位",
+      "tags": [
+        "快讯",
+        "AI"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.qbitai.com/feed"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-sciencedaily-mental-health",
+      "kind": "rss",
+      "name": "ScienceDaily · Mental Health",
+      "tags": [
+        "研究",
+        "心理"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.sciencedaily.com/rss/mind_brain/mental_health.xml"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-simon-willison",
+      "kind": "rss",
+      "name": "Simon Willison",
+      "tags": [
+        "个人"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://simonwillison.net/atom/everything/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-techcrunch-ai",
+      "kind": "rss",
+      "name": "TechCrunch · AI",
+      "tags": [
+        "媒体"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://techcrunch.com/category/artificial-intelligence/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-the-decoder",
+      "kind": "rss",
+      "name": "The Decoder",
+      "tags": [
+        "媒体"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://the-decoder.com/feed/"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-the-verge-ai",
+      "kind": "rss",
+      "name": "The Verge · AI",
+      "tags": [
+        "媒体"
+      ],
+      "tier": "T2",
+      "config": {
+        "_aihot": {
+          "initialBackfillLimit": 8
+        },
+        "feedUrl": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+      },
+      "enabled": true,
+      "site_fulltext": false,
+      "interval_minutes": 60,
+      "participation_mode": "editorial",
       "syndicate_fulltext": false
     }
   ]
